@@ -23,10 +23,10 @@ class Bid(BaseModel):
             return False
         if isinstance(other_bid, Bid):
             other_bid = other_bid.__dict__
-        other_bid.pop("id", None)
+        # other_bid.pop("id", None)
         current_bid_dict = self.__dict__
-        current_bid_dict.pop("id", None)
-        return all(other_bid[key] == current_bid_dict[key] for key in other_bid.keys())
+        # current_bid_dict.pop("id", None)
+        return all(other_bid[key] == current_bid_dict[key] for key in other_bid.keys() if key != "id")
 
 
 class SavedBid(Bid):

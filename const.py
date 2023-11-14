@@ -1,4 +1,3 @@
-
 open_bids_in_center_and_tel_aviv = {"ActiveQuickSearch": False, "KodYeud_Obj": [
     {"TableID": -1, "TableName": "ייעוד מכרז", "Code": 1, "Value": "בנייה נמוכה/צמודת קרקע", "Group": "מגורים",
      "Status": 0, "MichrazPail": 0, "OrderBy": 0}], "KodMerchav_Obj": [
