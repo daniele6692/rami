@@ -3,25 +3,17 @@ from typing import List
 from bid_helper import BidHelper
 from db_utils.session_container import SessionContainer
 from models.bid_update_result import BidsUpdateResult
-from models.bids import SavedBid, Bid
+from models.bids import Bid
 from rami_client import RamiClient
 from reops.bid_repo import BidRepo
 
 
 b = BidRepo()
-b.get_all()
+existing_bids = b.get_all()
 bids_update_result = BidsUpdateResult()
 
 raw_bids = RamiClient.get_raw_bids()
 new_bids_data: List[Bid] = BidHelper.convert_rami_data_to_bids(raw_bids)
-
-
-def save_new_bid(new_bid_data: Bid):
-    bids_collection.insert_one(new_bid_data.__dict__)
-
-
-def update_bid(existing_bid: SavedBid, new_bid_data: Bid):
-    bids_collection.update_one({"_id": existing_bid.id}, {"$set": new_bid_data.__dict__})
 
 
 def upsert_bid_data():
@@ -31,24 +23,16 @@ def upsert_bid_data():
             None)
         if existing_bid:
             if not new_bid_data.equals(existing_bid):
-                update_bid(existing_bid, new_bid_data)
+                b.update(existing_bid, new_bid_data.__dict__)
                 bids_update_result.updated_bids_ids.append(new_bid_data.bid_id)
         else:
-            save_new_bid(new_bid_data)
+            b.save(new_bid_data)
             bids_update_result.new_bids_ids.append(new_bid_data.bid_id)
 
 
-def delete_irrelevant_bids():
-    updated_bids_data_ids = [bid.bid_id for bid in new_bids_data]
-    filter_criteria = {'bid_id': {'$nin': updated_bids_data_ids}}
-    irrelevant_bids_records = bids_collection.find(filter_criteria)
-    irrelevant_bids_ids = [bid.get('bid_id') for bid in irrelevant_bids_records]
-    bids_update_result.deleted_bids_ids.extend(irrelevant_bids_ids)
-    bids_collection.delete_many(filter_criteria)
-
-
 upsert_bid_data()
-delete_irrelevant_bids()
+deleted_bids_ids = b.delete_bids(new_bids_data)
+bids_update_result.deleted_bids_ids.extend(deleted_bids_ids)
 SessionContainer.close_session()
 
 
