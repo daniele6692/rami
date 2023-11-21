@@ -26,7 +26,7 @@ class BaseRepo(ABC):
 
     def update(self, existing_record: T, new_data: dict):
         collection = self.get_collection()
-        collection.update_one({"_id": existing_record.id}, {"$set": new_data.__dict__})
+        collection.update_one({"_id": existing_record.id}, {"$set": new_data})
 
     def save(self, new_entity: T):
         collection = self.get_collection()

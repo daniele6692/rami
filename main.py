@@ -1,39 +1,23 @@
-from typing import List
+import logging
 
-from bid_helper import BidHelper
 from db_utils.session_container import SessionContainer
-from models.bid_update_result import BidsUpdateResult
-from models.bids import Bid
-from rami_client import RamiClient
-from reops.bid_repo import BidRepo
+from fastapi import FastAPI
+from routes.routes import router
+
+app = FastAPI()
+app.include_router(router)
 
 
-b = BidRepo()
-existing_bids = b.get_all()
-bids_update_result = BidsUpdateResult()
-
-raw_bids = RamiClient.get_raw_bids()
-new_bids_data: List[Bid] = BidHelper.convert_rami_data_to_bids(raw_bids)
+@app.on_event("startup")
+def startup_db_client():
+    logging.info("App started")
+    SessionContainer.get_session()
 
 
-def upsert_bid_data():
-    for new_bid_data in new_bids_data:
-        existing_bid = next(
-            (existing_bid for existing_bid in existing_bids if existing_bid.bid_id == new_bid_data.bid_id),
-            None)
-        if existing_bid:
-            if not new_bid_data.equals(existing_bid):
-                b.update(existing_bid, new_bid_data.__dict__)
-                bids_update_result.updated_bids_ids.append(new_bid_data.bid_id)
-        else:
-            b.save(new_bid_data)
-            bids_update_result.new_bids_ids.append(new_bid_data.bid_id)
-
-
-upsert_bid_data()
-deleted_bids_ids = b.delete_bids(new_bids_data)
-bids_update_result.deleted_bids_ids.extend(deleted_bids_ids)
-SessionContainer.close_session()
+@app.on_event("shutdown")
+def shutdown_db_client():
+    logging.info("Bye Bye!")
+    SessionContainer.close_session()
 
 
 # Query existing from DB (Mongo)?
@@ -43,10 +27,10 @@ SessionContainer.close_session()
 #       mongosh "mongodb://localhost:27017"
 #       Downloaded shell from https://www.mongodb.com/try/download/shell
 #       Moved its been to the same pass of the gcollazo-mongodb that were added to the PATH
+# FastAPI - https://www.mongodb.com/languages/python/pymongo-tutorial
 # Compare - V
 # Run in docker -
 # Run on server periodically (K8S)
-# FastAPI - https://www.mongodb.com/languages/python/pymongo-tutorial
 # Notify in SMS on new bids
 # Test
 # Subscribe / Unsubscribe
