@@ -11,7 +11,7 @@ app.include_router(router)
 @app.on_event("startup")
 def startup_db_client():
     logging.info("App started")
-    # SessionContainer.get_session()
+    SessionContainer.get_session()
 
 
 @app.on_event("shutdown")
@@ -47,4 +47,4 @@ def shutdown_db_client():
 
 # docker build -t rami:1.0 .
 # docker run -p 8000:8000 rami:1.0
-# Next Steps -> Uncomment mongo, understand which of the changes in the Dockerfile caused it to work 
+# Next Steps -> understand why the web image doesnt reach to mongo and make the work more efficient using volume
