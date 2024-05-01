@@ -1,6 +1,6 @@
 import pymongo
 
-from db_utils.db_client import db_client
+from src.db_utils.db_client import db_client
 
 
 class SessionContainer():

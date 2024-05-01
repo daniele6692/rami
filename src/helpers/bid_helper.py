@@ -1,8 +1,8 @@
 from typing import List
 
-from const import city_code_field_name, Villeges, audience_code_field_name, bid_preference_code_field_name, \
+from src.utils.const import city_code_field_name, Villeges, audience_code_field_name, bid_preference_code_field_name, \
     no_preference_codes, designated_for_the_public_codes
-from models.bids import Bid
+from src.models.bids import Bid
 
 
 class BidHelper:

@@ -1,9 +1,7 @@
 from abc import ABC
 from typing import Type, List, TypeVar
 
-from pydantic import BaseModel
-
-from db_utils.session_container import SessionContainer
+from src.db_utils.session_container import SessionContainer
 
 T = TypeVar("T")
 

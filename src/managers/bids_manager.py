@@ -1,16 +1,20 @@
 from typing import List
 
-from bid_helper import BidHelper
-from models.bid_update_result import BidsUpdateResult
-from models.bids import Bid
-from rami_client import RamiClient
-from reops.saved_bid_repo import SavedBidRepo
+from src.helpers.bid_helper import BidHelper
+from src.models.bid_update_result import BidsUpdateResult
+from src.models.bids import Bid
+from src.clients.rami_client import RamiClient
+from src.repos.saved_bid_repo import SavedBidRepo
 
 
 class BidsManager():
     
     def __init__(self):
         self.saved_bids_repo = SavedBidRepo()
+
+    def get_bids(self) -> List[Bid]:
+        all_bids = self.saved_bids_repo.get_all()
+        return all_bids
 
     def sync_bids(self) -> BidsUpdateResult:
         bids_update_result = BidsUpdateResult()

@@ -1,7 +1,7 @@
 from typing import List
 
-from models.bids import SavedBid, Bid
-from reops.base_repo import BaseRepo
+from src.models.bids import SavedBid, Bid
+from src.repos.base_repo import BaseRepo
 
 
 class SavedBidRepo(BaseRepo):

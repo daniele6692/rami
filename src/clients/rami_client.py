@@ -1,6 +1,6 @@
 import requests
 
-from const import open_bids_in_center_and_tel_aviv
+from src.utils.const import open_bids_in_center_and_tel_aviv
 
 
 class RamiClient:

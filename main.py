@@ -1,11 +1,13 @@
 import logging
 
-from db_utils.session_container import SessionContainer
+import uvicorn
+
+from src.db_utils.session_container import SessionContainer
 from fastapi import FastAPI
-from routes.routes import router
+from src.routes.routes import router
 
 app = FastAPI()
-app.include_router(router)
+app.include_router(router, tags=["bids"], prefix="/bids")
 
 
 @app.on_event("startup")
@@ -20,31 +22,17 @@ def shutdown_db_client():
     SessionContainer.close_session()
 
 
-# Query existing from DB (Mongo)?
-#       Downloaded $ brew cask install gcollazo-mongodb
-#       Created /via/data/db
-#       mongod --dbpath=/via/data/db - to run mongo
-#       mongosh "mongodb://localhost:27017"
-#       Downloaded shell from https://www.mongodb.com/try/download/shell
-#       Moved its been to the same pass of the gcollazo-mongodb that were added to the PATH
-# Run in docker -
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+# Q'sx
+# Auth for the Mongo DB?
+
+# Next Steps ->
+# make that the docker volume is persistent
+# Separate local and docker ports
+# https://www.mongodb.com/languages/python/pymongo-tutorial - check swagger
+# make the work more efficient using volume
 # Run on server periodically (K8S)
 # Notify in SMS on new bids
 # Test
-# Subscribe / Unsubscribe
-
-#       mongod --dbpath=/via/data/db - to run mongo
-#       mongosh "mongodb://localhost:27017"
-#           use bids_db - to switch DB
-#           db - to verify the DB your are at
-#           show collections - to see all collections under a DB
-#           db.bids.find({}) - to see all documents under bids
-#           db.bids.updateOne({"_id": ObjectId("64f379d4569c2b055d17d0b2")}, {$set: {
-#              is_online_bid: false
-#            }})
-
-
-
-# docker build -t rami:1.0 .
-# docker run -p 8000:8000 rami:1.0
-# Next Steps -> understand why the web image doesnt reach to mongo and make the work more efficient using volume
