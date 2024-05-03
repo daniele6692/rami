@@ -2,6 +2,7 @@ Installing & Running Mongo locally on MAC:
 1. `brew cask install gcollazo-mongodb`
 2. `mkdir /via/data/db`
 3. `mongod --dbpath=/via/data/db` - to run mongo
+   4. `mongod --fork --syslog --dbpath=/via/data/db` - to run in the background
 
 Installing Mongo Shell locally:
 1. Downloaded shell from https://www.mongodb.com/try/download/shell

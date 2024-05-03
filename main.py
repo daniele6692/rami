@@ -29,10 +29,7 @@ if __name__ == "__main__":
 # Auth for the Mongo DB?
 
 # Next Steps ->
-# make that the docker volume is persistent
 # Separate local and docker ports
-# https://www.mongodb.com/languages/python/pymongo-tutorial - check swagger
-# make the work more efficient using volume
 # Run on server periodically (K8S)
 # Notify in SMS on new bids
 # Test

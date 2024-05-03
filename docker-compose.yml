@@ -4,24 +4,25 @@ services:
   web-server:
     build: .
     ports:
-      - "8000:8000"
+      - "8001:8000"
     container_name: web-server
     restart: unless-stopped
     depends_on:
       - mongo
-#    volumes:
-#      - .:/app
     environment:
-      - FLASK_DEBUG="true"
-      - MONGO_URL=mongodb://mongo:27017
-    links:
-      - mongo
+      - MONGO_URI=mongodb://mongo:27017
   mongo:
-    image: mongo
+    image: mongo:latest
     container_name: mongo-db
-    restart: always
     ports:
-      - 27017:27017
+      - "27018:27017"
+#    env_file: .env
+    restart: always
 #    environment:
-#      MONGO_INITDB_ROOT_USERNAME: root
-#      MONGO_INITDB_ROOT_PASSWORD: example
+#      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+#      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
