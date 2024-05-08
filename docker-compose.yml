@@ -8,7 +8,7 @@ services:
       - "8001:8000"
     container_name: web-server
     restart: unless-stopped
-    env_file: ./stages/dev/.env
+    env_file: ./stages/${RAMI_STAGE}/.env
     depends_on:
       - mongo
   mongo:
@@ -16,7 +16,7 @@ services:
     container_name: mongo-db
     ports:
       - "27018:27017"
-    env_file: ./stages/dev/.env
+    env_file: ./stages/${RAMI_STAGE}/.env
     restart: always
     volumes:
       - mongo_data:/data/db

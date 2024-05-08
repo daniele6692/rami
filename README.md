@@ -25,7 +25,7 @@ Env vars for running the project locally:
 
 Useful Docker commands 
 1. docker compose up --build web-server -d
-2. docker-compose up --build --force-recreate --renew-anon-volumes
+2. RAMI_STAGE=dev docker-compose up --build --force-recreate --renew-anon-volumes
 2. docker compose down
 3. docker logs -f web-server
 4. docker build -t <some tag> .

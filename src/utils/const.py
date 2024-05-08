@@ -1,3 +1,4 @@
+LOCAL_STAGE = "local"
 bids_sync_interval_in_seconds = 300
 open_bids_in_center_and_tel_aviv = {"ActiveQuickSearch": False, "KodYeud_Obj": [
     {"TableID": -1, "TableName": "ייעוד מכרז", "Code": 1, "Value": "בנייה נמוכה/צמודת קרקע", "Group": "מגורים",

@@ -1,7 +1,7 @@
 import asyncio
 import uvicorn
 from dotenv import load_dotenv
-from src.utils.env_utils import get_env_file_path
+from src.utils.env_utils import get_env_file_path, is_running_locally
 from src.db_utils.session_container import SessionContainer
 from fastapi import FastAPI
 
@@ -37,20 +37,20 @@ async def _sync_bids():
 
 def _load_env_file():
     print("_load_env_file")
-    env_path = get_env_file_path()
-    is_successful = load_dotenv(env_path)
-    print(f".env file loaded successfully: {is_successful}")
+    if is_running_locally():
+        env_path = get_env_file_path()
+        is_successful = load_dotenv(env_path)
+        print(f".env file loaded successfully: {is_successful}")
 
 
 if __name__ == "__main__":
     print("Starting app")
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
 
-# Q'sx
-# Auth for the Mongo DB?
 
 # Next Steps ->
 # CI
 # K8S
+# Auth for the Mongo DB locally
 # Notify in SMS on new bids
 # Test
