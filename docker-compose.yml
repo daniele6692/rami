@@ -2,25 +2,22 @@ version: 2.23.1
 
 services:
   web-server:
-    build: .
+    build:
+      context: .
     ports:
       - "8001:8000"
     container_name: web-server
     restart: unless-stopped
+    env_file: ./stages/dev/.env
     depends_on:
       - mongo
-    environment:
-      - MONGO_URI=mongodb://mongo:27017
   mongo:
     image: mongo:latest
     container_name: mongo-db
     ports:
       - "27018:27017"
-#    env_file: .env
+    env_file: ./stages/dev/.env
     restart: always
-#    environment:
-#      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-#      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
       - mongo_data:/data/db
 

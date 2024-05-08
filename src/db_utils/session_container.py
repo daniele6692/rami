@@ -1,14 +1,13 @@
-import pymongo
-
-from src.db_utils.db_client import db_client
+from src.db_utils.db_client import DbClient
 
 
-class SessionContainer():
-    @staticmethod
-    def get_session() -> pymongo.database.Database:
-        bids_db = db_client.bids_db
-        return bids_db
+class SessionContainer(object):
+    db_client: DbClient = None
+    @classmethod
+    def init_session(cls):
+        cls.db_client = DbClient()
 
-    @staticmethod
-    def close_session():
-        db_client.close()
+    @classmethod
+    def get_session(cls):
+        return cls.db_client.get_session()
+

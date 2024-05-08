@@ -18,7 +18,7 @@ class BaseRepo(ABC):
         return existing_bids
 
     def get_collection(self):
-        session = SessionContainer.get_session()
+        session = SessionContainer().get_session()
         collection = session[self.collection_name]
         return collection
 
