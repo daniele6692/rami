@@ -15,7 +15,7 @@ app.include_router(router, tags=["bids"], prefix="/bids")
 
 @app.on_event("startup")
 def startup_db_client():
-    print("App started")
+    print("App started", flush=True)
     _load_env_file()
     asyncio.create_task(_sync_bids())
     SessionContainer.init_session()
@@ -29,7 +29,7 @@ def shutdown_db_client():
 async def _sync_bids():
     while True:
         await asyncio.sleep(bids_sync_interval_in_seconds)
-        print("About to run periodical sync")
+        print("About to run periodical sync", flush=True)
         manager = BidsManager()
         manager.sync_bids()
         print("Periodical sync completed")
@@ -49,8 +49,10 @@ if __name__ == "__main__":
 
 
 # Next Steps ->
+# VCS & Docker registry
+# Deploy to "live"
+    # K8S?
 # CI
-# K8S
 # Auth for the Mongo DB locally
 # Notify in SMS on new bids
 # Test
