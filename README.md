@@ -23,7 +23,7 @@
 3. `mongosh "mongodb://localhost:27017"` - to start shell vs local Mongo
 
 
-### Useful Docker commands 
+## How to run in Docker & useful commands 
 1. RAMI_STAGE=dev docker compose up --build web-server -d
 2. RAMI_STAGE=dev docker-compose up --build --force-recreate --renew-anon-volumes -d
 3. docker compose down
