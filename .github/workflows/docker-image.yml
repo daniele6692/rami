@@ -1,0 +1,34 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Extract branch name
+        id: extract_branch
+        run: echo "::set-output name=branch::$(echo ${GITHUB_REF#refs/heads/})"
+
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/rami:${{ steps.extract_branch.outputs.branch }} .
+
+      - name: Push master as latest
+        if: github.ref == 'refs/heads/master'
+        run: |
+          docker tag ghcr.io/${{ github.repository_owner }}/rami:${{ steps.extract_branch.outputs.branch }} ghcr.io/${{ github.repository_owner }}/your-repo:latest
+          docker push ghcr.io/${{ github.repository_owner }}/rami:latest
+
+      - name: Push Docker image
+        if: github.ref != 'refs/heads/master'
+        run: docker push ghcr.io/${{ github.repository_owner }}/rami:${{ steps.extract_branch.outputs.branch }}

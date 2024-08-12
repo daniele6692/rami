@@ -1,7 +1,7 @@
 version: 2.23.1
 
 services:
-  web-server:
+  rami-web-server:
     build:
       context: .
     ports:
