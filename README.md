@@ -39,3 +39,6 @@
 4. `db.bids.find({})` - to see all documents under bids collection
 5. `db.bids.updateOne({"_id": ObjectId("64f379d4569c2b055d17d0b2")}, {$set: {is_online_bid: false}})` - an example for an update command
 
+
+Bla Bla Bla
+
