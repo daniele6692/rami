@@ -1,5 +1,3 @@
-version: 2.23.1
-
 services:
   rami-web-server:
     build:
