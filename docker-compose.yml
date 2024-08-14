@@ -4,7 +4,7 @@ services:
       context: .
     ports:
       - "8001:8000"
-    container_name: web-server
+    container_name: rami-web-server
     restart: unless-stopped
     env_file: ./stages/${RAMI_STAGE}/.env
     depends_on:

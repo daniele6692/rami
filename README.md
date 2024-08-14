@@ -24,10 +24,10 @@
 
 
 ## How to run in Docker & useful commands 
-1. RAMI_STAGE=dev docker compose up --build web-server -d
+1. RAMI_STAGE=dev docker-compose up --build rami-web-server -d
 2. RAMI_STAGE=dev docker-compose up --build --force-recreate --renew-anon-volumes -d
 3. docker compose down
-4. docker logs -f web-server
+4. docker logs -f rami-web-server
 5. docker build -t <some tag> .
 6. docker exec -it mongo-db mongosh <"mongodb://<user>:<pass>@localhost:27017/admin">
 
