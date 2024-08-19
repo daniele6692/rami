@@ -35,5 +35,4 @@ jobs:
 
       - name: Push master as latest
         run: |
-          docker tag ghcr.io/${{ github.repository_owner }}/rami:${{ steps.extract_branch.outputs.branch }} ghcr.io/${{ github.repository_owner }}/rami:latest
           docker push ghcr.io/${{ github.repository_owner }}/rami:${{ env.DOCKER_TAG_NAME }}
