@@ -1,6 +1,6 @@
 import requests
 
-from src.utils.const import open_bids_in_center_and_tel_aviv
+from src.utils.const import OPEN_BIDS_IN_CENTER_AND_TEL_AVIV
 
 
 class RamiClient:
@@ -9,6 +9,6 @@ class RamiClient:
     def get_raw_bids():
         response = requests.post(
             "https://apps.land.gov.il/MichrazimSite/api/SearchApi/Search",
-            json=open_bids_in_center_and_tel_aviv,
+            json=OPEN_BIDS_IN_CENTER_AND_TEL_AVIV,
         )
         return response.json()

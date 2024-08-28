@@ -7,7 +7,7 @@ from fastapi import FastAPI
 
 from src.managers.bids_manager import BidsManager
 from src.routes.routes import router
-from src.utils.const import bids_sync_interval_in_seconds
+from src.utils.const import BIDS_SYNC_INTERVAL_IN_SECONDS
 
 app = FastAPI()
 app.include_router(router, tags=["bids"], prefix="/bids")
@@ -28,7 +28,7 @@ def shutdown_db_client():
 
 async def _sync_bids():
     while True:
-        await asyncio.sleep(bids_sync_interval_in_seconds)
+        await asyncio.sleep(BIDS_SYNC_INTERVAL_IN_SECONDS)
         print("About to run periodical sync", flush=True)
         manager = BidsManager()
         manager.sync_bids()
