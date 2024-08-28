@@ -1,6 +1,6 @@
 LOCAL_STAGE = "local"
-bids_sync_interval_in_seconds = 60
-open_bids_in_center_and_tel_aviv = {
+BIDS_SYNC_INTERVAL_IN_SECONDS = 60
+OPEN_BIDS_IN_CENTER_AND_TEL_AVIV = {
     "ActiveQuickSearch": False,
     "KodYeud_Obj": [
         {
@@ -64,14 +64,14 @@ open_bids_in_center_and_tel_aviv = {
     "Status": [1, 2],
 }
 
-city_code_field_name = "KodYeshuv"
-audience_code_field_name = "KhalYaadRashi"
-bid_preference_code_field_name = "KodSugMichraz"
+CITY_CODE_FIELD_NAME = "KodYeshuv"
+AUDIENCE_CODE_FIELD_NAME = "KhalYaadRashi"
+BID_PREFERENCE_CODE_FIELD_NAME = "KodSugMichraz"
 
 designated_for_the_public_codes = [1]
 no_preference_codes = [1]
 
-# Taken from https://www.gov.il/BlobFolder/policy/special_restrictions_for_nursing_workers_wishing_to_replace_their_employer/he/%D7%98%D7%91%D7%9C%D7%AA%20%D7%99%D7%A9%D7%95%D7%91%D7%99%D7%9D%20%D7%91%D7%97%D7%9C%D7%95%D7%A7%D7%94%20%D7%92%D7%99%D7%90%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%AA.pdf
+# Taken from https://www.gov.il/BlobFolder/policy/special_restrictions_for_nursing_workers_wishing_to_replace_their_employer/he/%D7%98%D7%91%D7%9C%D7%AA%20%D7%99%D7%A9%D7%95%D7%91%D7%99%D7%9D%20%D7%91%D7%97%D7%9C%D7%95%D7%A7%D7%94%20%D7%92%D7%99%D7%90%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%AA.pdf # pylint: disable=line-too-long
 Villeges = {
     2400: "אור יהודה",
     565: "אזור",
@@ -1359,3 +1359,4 @@ Villeges = {
     970: "תראבין א-צאנע )שבט(",
     1346: "תראבין א-צאנע)ישוב(",
 }
+# pylint: disable=too-many-lines
