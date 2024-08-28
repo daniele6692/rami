@@ -7,8 +7,8 @@ from src.clients.rami_client import RamiClient
 from src.repos.saved_bid_repo import SavedBidRepo
 
 
-class BidsManager():
-    
+class BidsManager:
+
     def __init__(self):
         self.saved_bids_repo = SavedBidRepo()
 
@@ -34,12 +34,19 @@ class BidsManager():
         deleted_bids_ids = self.saved_bids_repo.delete_bids(new_bids_data)
         bids_update_result.deleted_bids_ids.extend(deleted_bids_ids)
 
-    def _upsert_bid_data(self, new_bids_data: List[Bid], bids_update_result: BidsUpdateResult):
+    def _upsert_bid_data(
+        self, new_bids_data: List[Bid], bids_update_result: BidsUpdateResult
+    ):
         existing_bids = self.saved_bids_repo.get_all()
         for new_bid_data in new_bids_data:
             existing_bid = next(
-                (existing_bid for existing_bid in existing_bids if existing_bid.bid_id == new_bid_data.bid_id),
-                None)
+                (
+                    existing_bid
+                    for existing_bid in existing_bids
+                    if existing_bid.bid_id == new_bid_data.bid_id
+                ),
+                None,
+            )
             if existing_bid:
                 if not new_bid_data.equals(existing_bid):
                     self.saved_bids_repo.update(existing_bid, new_bid_data.__dict__)

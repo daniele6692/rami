@@ -14,7 +14,9 @@ class BaseRepo(ABC):
     def get_all(self, filter: dict = None) -> List[T]:
         collection = self.get_collection()
         existing_records = collection.find(filter)
-        existing_bids: List[Type] = [self.base_type(**record) for record in existing_records]
+        existing_bids: List[Type] = [
+            self.base_type(**record) for record in existing_records
+        ]
         return existing_bids
 
     def get_collection(self):
@@ -29,7 +31,7 @@ class BaseRepo(ABC):
     def save(self, new_entity: T):
         collection = self.get_collection()
         collection.insert_one(new_entity.__dict__)
-        
+
     def delete(self, deletion_criteria):
         collection = self.get_collection()
         collection.delete_many(deletion_criteria)

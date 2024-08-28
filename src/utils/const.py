@@ -1,20 +1,72 @@
 LOCAL_STAGE = "local"
 bids_sync_interval_in_seconds = 60
-open_bids_in_center_and_tel_aviv = {"ActiveQuickSearch": False, "KodYeud_Obj": [
-    {"TableID": -1, "TableName": "ייעוד מכרז", "Code": 1, "Value": "בנייה נמוכה/צמודת קרקע", "Group": "מגורים",
-     "Status": 0, "MichrazPail": 0, "OrderBy": 0}], "KodMerchav_Obj": [
-    {"TableID": 66, "TableName": "מרחבים", "Code": 5, "Value": "תל אביב", "Group": None, "Status": 1, "MichrazPail": 0,
-     "OrderBy": 0},
-    {"TableID": 66, "TableName": "מרחבים", "Code": 4, "Value": "מרכז", "Group": None, "Status": 1, "MichrazPail": 0,
-     "OrderBy": 0}], "KodYeud": [1], "KodMerchav": [5, 4], "ActiveMichraz": None, "Status_Obj": [
-    {"TableID": 237, "TableName": "סטטוס מכרז מורחב", "Code": 1, "Value": "מפורסם", "Group": None, "Status": 1,
-     "MichrazPail": 1, "OrderBy": 0},
-    {"TableID": 237, "TableName": "סטטוס מכרז מורחב", "Code": 2, "Value": "פתוח להגשת הצעות", "Group": None,
-     "Status": 1, "MichrazPail": 1, "OrderBy": 0}], "Status": [1, 2]}
+open_bids_in_center_and_tel_aviv = {
+    "ActiveQuickSearch": False,
+    "KodYeud_Obj": [
+        {
+            "TableID": -1,
+            "TableName": "ייעוד מכרז",
+            "Code": 1,
+            "Value": "בנייה נמוכה/צמודת קרקע",
+            "Group": "מגורים",
+            "Status": 0,
+            "MichrazPail": 0,
+            "OrderBy": 0,
+        }
+    ],
+    "KodMerchav_Obj": [
+        {
+            "TableID": 66,
+            "TableName": "מרחבים",
+            "Code": 5,
+            "Value": "תל אביב",
+            "Group": None,
+            "Status": 1,
+            "MichrazPail": 0,
+            "OrderBy": 0,
+        },
+        {
+            "TableID": 66,
+            "TableName": "מרחבים",
+            "Code": 4,
+            "Value": "מרכז",
+            "Group": None,
+            "Status": 1,
+            "MichrazPail": 0,
+            "OrderBy": 0,
+        },
+    ],
+    "KodYeud": [1],
+    "KodMerchav": [5, 4],
+    "ActiveMichraz": None,
+    "Status_Obj": [
+        {
+            "TableID": 237,
+            "TableName": "סטטוס מכרז מורחב",
+            "Code": 1,
+            "Value": "מפורסם",
+            "Group": None,
+            "Status": 1,
+            "MichrazPail": 1,
+            "OrderBy": 0,
+        },
+        {
+            "TableID": 237,
+            "TableName": "סטטוס מכרז מורחב",
+            "Code": 2,
+            "Value": "פתוח להגשת הצעות",
+            "Group": None,
+            "Status": 1,
+            "MichrazPail": 1,
+            "OrderBy": 0,
+        },
+    ],
+    "Status": [1, 2],
+}
 
-city_code_field_name = 'KodYeshuv'
-audience_code_field_name = 'KhalYaadRashi'
-bid_preference_code_field_name = 'KodSugMichraz'
+city_code_field_name = "KodYeshuv"
+audience_code_field_name = "KhalYaadRashi"
+bid_preference_code_field_name = "KodSugMichraz"
 
 designated_for_the_public_codes = [1]
 no_preference_codes = [1]

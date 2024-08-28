@@ -51,7 +51,7 @@ if __name__ == "__main__":
 # Next Steps ->
 # VCS & Docker registry
 # Deploy to "live"
-    # K8S?
+# K8S?
 # CI
 # Auth for the Mongo DB locally
 # Notify in SMS on new bids
