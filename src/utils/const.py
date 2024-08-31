@@ -1,6 +1,6 @@
 LOCAL_STAGE = "local"
-bids_sync_interval_in_seconds = 60
-open_bids_in_center_and_tel_aviv = {
+BIDS_SYNC_INTERVAL_IN_SECONDS = 60
+OPEN_BIDS_IN_CENTER_AND_TEL_AVIV = {
     "ActiveQuickSearch": False,
     "KodYeud_Obj": [
         {
@@ -64,9 +64,9 @@ open_bids_in_center_and_tel_aviv = {
     "Status": [1, 2],
 }
 
-city_code_field_name = "KodYeshuv"
-audience_code_field_name = "KhalYaadRashi"
-bid_preference_code_field_name = "KodSugMichraz"
+CITY_CODE_FIELD_NAME = "KodYeshuv"
+AUDIENCE_CODE_FIELD_NAME = "KhalYaadRashi"
+BID_PREFERENCE_CODE_FIELD_NAME = "KodSugMichraz"
 
 designated_for_the_public_codes = [1]
 no_preference_codes = [1]
