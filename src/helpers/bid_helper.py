@@ -5,8 +5,8 @@ from src.utils.const import (
     Villeges,
     AUDIENCE_CODE_FIELD_NAME,
     BID_PREFERENCE_CODE_FIELD_NAME,
-    no_preference_codes,
-    designated_for_the_public_codes,
+    NO_PREFERENCE_CODES,
+    DESIGNATED_FOR_THE_PUBLIC_CODES,
 )
 from src.models.bids import Bid
 
@@ -19,8 +19,8 @@ class BidHelper:
             city_name = Villeges.get(bid_data.get(CITY_CODE_FIELD_NAME))
             audience_code = bid_data.get(AUDIENCE_CODE_FIELD_NAME)
             bid_preference_code = bid_data.get(BID_PREFERENCE_CODE_FIELD_NAME)
-            is_bid_with_preference = bid_preference_code in no_preference_codes
-            for_private_structure = audience_code in designated_for_the_public_codes
+            is_bid_with_preference = bid_preference_code in NO_PREFERENCE_CODES
+            for_private_structure = audience_code in DESIGNATED_FOR_THE_PUBLIC_CODES
             bid_with_city_name = {
                 **bid_data,
                 "city": city_name,

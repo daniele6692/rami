@@ -68,8 +68,8 @@ CITY_CODE_FIELD_NAME = "KodYeshuv"
 AUDIENCE_CODE_FIELD_NAME = "KhalYaadRashi"
 BID_PREFERENCE_CODE_FIELD_NAME = "KodSugMichraz"
 
-designated_for_the_public_codes = [1]
-no_preference_codes = [1]
+DESIGNATED_FOR_THE_PUBLIC_CODES = [1]
+NO_PREFERENCE_CODES = [1]
 
 # Taken from https://www.gov.il/BlobFolder/policy/special_restrictions_for_nursing_workers_wishing_to_replace_their_employer/he/%D7%98%D7%91%D7%9C%D7%AA%20%D7%99%D7%A9%D7%95%D7%91%D7%99%D7%9D%20%D7%91%D7%97%D7%9C%D7%95%D7%A7%D7%94%20%D7%92%D7%99%D7%90%D7%95%D7%92%D7%A8%D7%A4%D7%99%D7%AA.pdf
 Villeges = {
