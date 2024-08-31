@@ -1,7 +1,7 @@
 from src.db_utils.db_client import DbClient
 
 
-class SessionContainer(object):
+class SessionContainer:
     db_client: DbClient = None
 
     @classmethod

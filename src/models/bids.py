@@ -39,7 +39,7 @@ class Bid(BaseModel):
     )
 
     def equals(self, other_bid):
-        if not isinstance(other_bid, Bid) and type(other_bid) != dict:
+        if not isinstance(other_bid, Bid) and isinstance(other_bid) != dict:
             return False
         if isinstance(other_bid, Bid):
             other_bid = other_bid.__dict__
