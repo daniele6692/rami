@@ -24,6 +24,13 @@ jobs:
         fetch-depth: 0
     - name: Fetch all branches
       run: git fetch origin +refs/heads/*:refs/remotes/origin/*
+    - name: Check if HEAD is detached
+      run: |
+        if [ "$(git rev-parse --abbrev-ref HEAD)" = "HEAD" ]; then
+          echo "HEAD is in a detached state"
+        else
+          echo "HEAD is attached to branch: $(git rev-parse --abbrev-ref HEAD)"
+        fi
     - name: Compare changes against main
       run: git diff origin/main...HEAD
     - name: Get Changed Python Files
