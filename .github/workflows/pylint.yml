@@ -31,8 +31,8 @@ jobs:
         else
           echo "HEAD is attached to branch: $(git rev-parse --abbrev-ref HEAD)"
         fi
-    - name: Compare changes against main
-      run: git diff origin/main...HEAD
+    - name: Compare changes against master
+      run: git diff origin/master...HEAD
     - name: Get Changed Python Files
       id: changes
       run: |
