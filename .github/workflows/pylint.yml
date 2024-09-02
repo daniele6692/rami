@@ -18,10 +18,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
-    - name: Fetch branches
-      run: git fetch origin master
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Fetch all branches
+      run: git fetch origin +refs/heads/*:refs/remotes/origin/*
     - name: Compare changes against main
-      run: git diff origin/master...HEAD
+      run: git diff origin/main...HEAD
     - name: Get Changed Python Files
       id: changes
       run: |
