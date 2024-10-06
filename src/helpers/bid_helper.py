@@ -1,14 +1,14 @@
 from typing import List
 
+from src.models.bids import Bid
 from src.utils.const import (
-    CITY_CODE_FIELD_NAME,
-    Villeges,
     AUDIENCE_CODE_FIELD_NAME,
     BID_PREFERENCE_CODE_FIELD_NAME,
-    no_preference_codes,
+    CITY_CODE_FIELD_NAME,
+    Villeges,
     designated_for_the_public_codes,
+    no_preference_codes,
 )
-from src.models.bids import Bid
 
 
 class BidHelper:

@@ -1,6 +1,6 @@
 from typing import List
 
-from src.models.bids import SavedBid, Bid
+from src.models.bids import Bid, SavedBid
 from src.repos.base_repo import BaseRepo
 
 

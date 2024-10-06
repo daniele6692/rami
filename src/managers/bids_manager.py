@@ -1,9 +1,9 @@
 from typing import List
 
+from src.clients.rami_client import RamiClient
 from src.helpers.bid_helper import BidHelper
 from src.models.bid_update_result import BidsUpdateResult
 from src.models.bids import Bid
-from src.clients.rami_client import RamiClient
 from src.repos.saved_bid_repo import SavedBidRepo
 
 

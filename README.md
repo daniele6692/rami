@@ -1,7 +1,7 @@
 # RAMI Bids Updator
 
 
-## How to run the project locally 
+## How to run the project locally
 1. [Make sure your Mongo is running locally](#installing--running-mongo-locally-on-mac)
 2. set the env var to be MONGO_URL = mongodb://127.0.0.1:27017
 
@@ -23,7 +23,7 @@
 3. `mongosh "mongodb://localhost:27017"` - to start shell vs local Mongo
 
 
-## How to run in Docker & useful commands 
+## How to run in Docker & useful commands
 1. RAMI_STAGE=dev docker-compose up --build rami-web-server -d
 2. RAMI_STAGE=dev docker-compose up --build --force-recreate --renew-anon-volumes -d
 3. docker compose down
@@ -33,10 +33,14 @@
 
 
 ### Useful Mongo Commands:
-1. `use bids_db` - To switch DB's (schemes) 
+1. `use bids_db` - To switch DB's (schemes)
 2. `db` - To verify the DB you are currently at
 3. `show collections` - to see all collections under current DB
 4. `db.bids.find({})` - to see all documents under bids collection
 5. `db.bids.updateOne({"_id": ObjectId("64f379d4569c2b055d17d0b2")}, {$set: {is_online_bid: false}})` - an example for an update command
 
 
+### Additional manual command (done also as part of pre-commit)
+1. isort ./
+2. pylint ./
+3.

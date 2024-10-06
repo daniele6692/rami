@@ -1,13 +1,14 @@
 import asyncio
+
 import uvicorn
 from dotenv import load_dotenv
-from src.utils.env_utils import get_env_file_path, is_running_locally
-from src.db_utils.session_container import SessionContainer
 from fastapi import FastAPI
 
+from src.db_utils.session_container import SessionContainer
 from src.managers.bids_manager import BidsManager
 from src.routes.routes import router
 from src.utils.const import BIDS_SYNC_INTERVAL_IN_SECONDS
+from src.utils.env_utils import get_env_file_path, is_running_locally
 
 app = FastAPI()
 app.include_router(router, tags=["bids"], prefix="/bids")
@@ -49,10 +50,13 @@ if __name__ == "__main__":
 
 
 # Next Steps ->
-# VCS & Docker registry
+# Git pre-commit-hooks
+# 1. Make sure it checks only my current changes
+# 2. add the checks to the pipeline and make sure it fails when needed
+
+# Auto Align all repo according to python best practices
 # Deploy to "live"
 # K8S?
-# CI
+# CI + Tests
 # Auth for the Mongo DB locally
 # Notify in SMS on new bids
-# Test

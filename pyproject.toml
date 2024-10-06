@@ -1,0 +1,3 @@
+[tool.isort]
+profile = "black" # Consistent with black formatting
+line_length = 100

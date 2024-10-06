@@ -1,0 +1,11 @@
+name: pre-commit checks on changed files
+on: [push, pull_request]
+jobs:
+  run_pre_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: pip install pre-commit
+      - run: |
+          pre-commit run --from-ref origin/master --to-ref HEAD

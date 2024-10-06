@@ -1,6 +1,7 @@
 from functools import cache
 
 from pymongo import MongoClient
+
 from src.utils.env_utils import get_env_var
 
 
