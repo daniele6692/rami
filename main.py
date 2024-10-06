@@ -2,12 +2,13 @@ import asyncio
 
 import uvicorn
 from dotenv import load_dotenv
+from src.utils.const import BIDS_SYNC_INTERVAL_IN_SECONDS
+
 from fastapi import FastAPI
 
 from src.db_utils.session_container import SessionContainer
 from src.managers.bids_manager import BidsManager
 from src.routes.routes import router
-from src.utils.const import BIDS_SYNC_INTERVAL_IN_SECONDS
 from src.utils.env_utils import get_env_file_path, is_running_locally
 
 app = FastAPI()
@@ -60,3 +61,5 @@ if __name__ == "__main__":
 # CI + Tests
 # Auth for the Mongo DB locally
 # Notify in SMS on new bids
+
+

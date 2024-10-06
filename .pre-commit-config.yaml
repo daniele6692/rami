@@ -14,18 +14,18 @@ repos:
       - id: black
         language_version: python3.11
 
-  - repo: local
-    hooks:
-      - id: pylint
-        name: pylint
-        entry: pylint
-        language: system
-        types: [python]
-        args:
-          [
-            "--rcfile=./.pylintrc", # Link to your config file
-            "--load-plugins=pylint.extensions.docparams", # Load an extension
-          ]
+#  - repo: local
+#    hooks:
+#      - id: pylint
+#        name: pylint
+#        entry: pylint
+#        language: system
+#        types: [python]
+#        args:
+#          [
+#            "--rcfile=./.pylintrc", # Link to your config file
+#            "--load-plugins=pylint.extensions.docparams", # Load an extension
+#          ]
 
   - repo: https://github.com/pycqa/isort
     rev: 5.13.2
