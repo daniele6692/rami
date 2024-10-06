@@ -43,4 +43,3 @@
 ### Additional manual command (done also as part of pre-commit)
 1. isort ./
 2. pylint ./
-3.
